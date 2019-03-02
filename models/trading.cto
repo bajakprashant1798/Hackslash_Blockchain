@@ -12,7 +12,9 @@ asset Events identified by eventId {
    o String venue
    o EventType eventType
    o Integer quantity
+   o Double donatePer
    --> Organizer organizer
+   --> Ngo ngo
 }
 
 
@@ -35,6 +37,12 @@ asset Ticket identified by ticketId {
    o Double saleValue optional
    --> Events events
    --> User owner optional
+   --> Donation donation
+}
+
+asset Donation identified by donationId {
+ 	o String donationId
+    o Double amount
 }
 
 participant User identified by userId {
@@ -70,6 +78,7 @@ transaction sellTicket  {
   o Double saleValue
   --> User user
   --> Ticket ticket
+  --> Donation donation
 }
 
 transaction createEvent {
