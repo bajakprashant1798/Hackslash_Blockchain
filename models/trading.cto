@@ -37,7 +37,7 @@ asset Ticket identified by ticketId {
    o Double saleValue optional
    --> Events events
    --> User owner optional
-   --> Donation donation
+   --> Donation donation optional
 }
 
 asset Donation identified by donationId {
@@ -78,7 +78,7 @@ transaction sellTicket  {
   o Double saleValue
   --> User user
   --> Ticket ticket
-  --> Donation donation
+  --> Donation donation optional
 }
 
 transaction createEvent {
