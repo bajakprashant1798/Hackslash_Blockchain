@@ -1,11 +1,11 @@
 # Hackslash_Blockchain
 
-##Problem Statement:
+## Problem Statement:
 - To develop a platform which collaborates event organizers and charitable trusts or
 NGOs with end users who pay through blockchain tokens for different events on the platform
 and a part is contributed to the trusts or NGOs.
 
-##Description:
+## Description:
 
 - Many NGOs struggle to collect or raise funds for their trusts. This platform will register
 and collect important data on partner NGOs and will be shown to various event organizers. The
