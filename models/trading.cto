@@ -75,7 +75,7 @@ transaction redeemTicket  {
 }
 
 transaction sellTicket  {
-  o Double saleValue
+  o Double saleValue optional
   --> User user
   --> Ticket ticket
   --> Donation donation optional
@@ -89,5 +89,7 @@ transaction createEvent {
    o EventType eventType
    o Integer quantity
    o Double ticketBaseValue
-   o Organizer organizer
+   o Double donatePer
+   --> Organizer organizer
+   --> Ngo ngo
 }
