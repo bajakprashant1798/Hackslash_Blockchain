@@ -3,8 +3,7 @@
  */
 namespace org.aiuto.app
 
-
-asset Event identified by eventId {
+asset Events identified by eventId {
    o String eventId
    o String date
    o String description
@@ -14,10 +13,9 @@ asset Event identified by eventId {
    --> Organizer organizer
 }
 
-
 enum EventType {
     o OPEN_SEATING
-	o RESERVED_SEATING
+    o RESERVED_SEATING
 }
 	
 enum TicketState {
@@ -32,7 +30,7 @@ asset Ticket identified by ticketId {
    o TicketState state
    o Double baseValue
    o Double saleValue optional
-   --> Event event
+   --> Events events
    --> User owner optional
 }
 
