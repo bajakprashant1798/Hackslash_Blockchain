@@ -1,7 +1,9 @@
 /**
  * Social Good Blockchain
  */
+
 namespace org.aiuto.app
+
 
 asset Events identified by eventId {
    o String eventId
@@ -13,9 +15,10 @@ asset Events identified by eventId {
    --> Organizer organizer
 }
 
+
 enum EventType {
     o OPEN_SEATING
-    o RESERVED_SEATING
+	o RESERVED_SEATING
 }
 	
 enum TicketState {
