@@ -1,27 +1,39 @@
-/*
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 /**
  * Social Good Blockchain
  */
-namespace org.example.trading
+namespace org.aiuto.app
 
-asset Tickets identified by tradingSymbol {
-  o String tradingSymbol
-  o String description
-  o String mainExchange
-  o Double quantity
-  --> User owner
+
+asset Event identified by eventId {
+   o String eventId
+   o String date
+   o String description
+   o String venue
+   o EventType eventType
+   o Integer quantity
+   --> Organizer organizer
+}
+
+
+enum EventType {
+    o OPEN_SEATING
+	o RESERVED_SEATING
+}
+	
+enum TicketState {
+  o AVAILABLE
+  o SOLD
+  o USED
+}
+
+asset Ticket identified by ticketId {
+   o String ticketId
+   o String seatId
+   o TicketState state
+   o Double baseValue
+   o Double saleValue optional
+   --> Event event
+   --> User owner optional
 }
 
 participant User identified by userId {
@@ -29,11 +41,18 @@ participant User identified by userId {
   o String firstName
   o String lastName
   o String email
-  o String Company
-  o Double isOrganizer
 }
 
-participant NgoInfo identified by ngoId {
+participant Organizer identified by orgId {
+  o String orgId
+  o String firstName
+  o String lastName
+  o String email
+  o String orgName
+}
+
+
+participant Ngo identified by ngoId {
   o String ngoId
   o String firstName
   o String lastName
@@ -42,18 +61,23 @@ participant NgoInfo identified by ngoId {
   o String ngoEmail
 }
 
-transaction Purchase {
-  --> Tickets tickets
-  --> User newOwner
+transaction redeemTicket  {
+   --> Ticket ticket
 }
 
-event PurchaseNotification {
-  --> Tickets tickets
+transaction sellTicket  {
+  o Double saleValue
+  --> User user
+  --> Ticket ticket
 }
 
-transaction RemoveHighQuantityCommodities {
-}
-
-event RemoveNotification {
-  --> Tickets tickets
+transaction createEvent {
+   o String eventId
+   o String date
+   o String description
+   o String venue
+   o EventType eventType
+   o Integer quantity
+   o Double ticketBaseValue
+   o Organizer organizer
 }
