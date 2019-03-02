@@ -1,40 +1,19 @@
-/*
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
-query selectCommodities {
-  description: "Select all commodities"
+query selectTickets {
+  description: "Select all tickets"
   statement:
-      SELECT org.example.trading.Tickets
+      SELECT org.aiuto.app.Ticket
 }
 
-query selectCommoditiesByExchange {
-  description: "Select all commodities based on their main exchange"
+query selectTicketsByEventId {
+  description: "Select all tickets based on their event"
   statement:
-      SELECT org.example.trading.Tickets
-          WHERE (mainExchange==_$exchange)
+      SELECT org.aiuto.app.Ticket
+          WHERE (events.eventId==_$eventId)
 }
 
-query selectCommoditiesByOwner {
-  description: "Select all commodities based on their owner"
+query selectTicketsByOwner {
+  description: "Select all tickets based on their owner/User"
   statement:
-      SELECT org.example.trading.Tickets
+      SELECT org.aiuto.app.Ticket
           WHERE (owner == _$owner)
-}
-
-query selectCommoditiesWithHighQuantity {
-  description: "Select commodities based on quantity"
-  statement:
-      SELECT org.example.trading.Tickets
-          WHERE (quantity > 60)
 }
